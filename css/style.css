@@ -1,15 +1,29 @@
 body{
-    background-image: url("https://chakracenter.files.wordpress.com/2013/02/nature1.jpg");
+    background-image: url("http://www.getpictures.info/wp-content/uploads/2014/10/wallpaper-hd-abstract-color-gieutf9e.jpg");
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+input {
+    width: 150px;
+    height: 30px;
+    padding: 5px;
+}
+input[type=submit]{
+    margin-left: 10px;
+    border: 0px;
+    background-color: #56afee;
+    color: white;
+
+}
+
 h1{
-    font-size: 30px;
+    font-size: 40px;
+    color: white;
 }
 h2{
     font-size: 13px;
     margin-bottom: 5px;
-    color: #FC5969;
+    color: white;
 }
 
 #login_div{
