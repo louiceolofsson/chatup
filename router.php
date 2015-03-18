@@ -1,4 +1,5 @@
 <?php
+
 function __autoload($class) {
     require_once "./controllers/" . strtolower($class) . ".php";
 }
@@ -53,3 +54,12 @@ else{
     $cont = new ErrorController;
     $cont->notFoundAction();
 }
+
+?>
+<html>
+<head>
+    <link href="css/restart.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body></body>
+</html>
