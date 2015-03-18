@@ -1,7 +1,7 @@
 <?php
 class UserController{
     public function indexAction(){
-        require_once "./views/loginregister.php";
+        require_once "../views/loginregister.php";
     }
 
     public function registerAction(){
@@ -17,7 +17,7 @@ class UserController{
                     $hashPass = password_hash($_POST["password2"], PASSWORD_BCRYPT, array("cost" => 11));
 
                     //Add to database
-                    $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "");
+                    $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "root");
                     $stm = $db->prepare("INSERT INTO users (user_fname, user_lname, user_email, user_pass) VALUES (:fname, :lname, :email2, :password2)");
                     $result = $stm->execute(array(
                         ":fname" => $_POST["fname"],
@@ -57,7 +57,7 @@ class UserController{
     // asd.com/user/login
     public function loginAction(){
         /*  Gets the hash-password from the db and puts the value inside $hash */
-        $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "");
+        $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "root");
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
         $stm = $db->prepare("SELECT user_pass FROM users WHERE user_email = :user_email");
@@ -66,9 +66,9 @@ class UserController{
         $stm->execute();
         $hash = $stm->fetchColumn();
 
-        //verify it by comparing to the given passowrd
+        //verify it by comparing to the given password
         if (password_verify($_POST["password1"], $hash)) {
-            $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "");
+            $db = new PDO("mysql:host=localhost;dbname=chatup", "root", "root");
             $stm = $db->prepare("SELECT * FROM users WHERE user_email = :email1 AND user_pass = :hash");
             $stm->execute(array(
                 ":hash" => $hash,
